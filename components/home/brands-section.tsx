@@ -1,8 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
-import { brands } from "@/lib/mock-data"
+import type { Brand } from "@/lib/types"
 
-export function BrandsSection() {
+interface BrandsSectionProps {
+  brands?: Brand[]
+}
+
+export function BrandsSection({ brands = [] }: BrandsSectionProps) {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">

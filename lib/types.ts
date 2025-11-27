@@ -40,6 +40,7 @@ export interface Category {
   parentId?: string
   children?: Category[]
   image?: string
+  productCount?: number
 }
 
 export interface Compatibility {

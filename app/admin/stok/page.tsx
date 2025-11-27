@@ -195,7 +195,7 @@ export default function StockManagementPage() {
                     <TableCell className="font-mono text-sm">{product.sku}</TableCell>
                     <TableCell>
                       <p className="font-medium">{product.name}</p>
-                      <p className="text-sm text-muted-foreground">{product.brand}</p>
+                      <p className="text-sm text-muted-foreground">{product.brand.name}</p>
                     </TableCell>
                     <TableCell className="text-center">
                       {product.stock === 0 ? (

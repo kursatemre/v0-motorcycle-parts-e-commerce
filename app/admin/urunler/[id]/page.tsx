@@ -102,7 +102,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label>Marka *</Label>
-                      <Select defaultValue={product.brand.toLowerCase()}>
+                      <Select defaultValue={product.brand.name.toLowerCase()}>
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
@@ -117,7 +117,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                     </div>
                     <div className="space-y-2">
                       <Label>Kategori *</Label>
-                      <Select defaultValue={product.category}>
+                      <Select defaultValue={product.category.id}>
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
@@ -249,7 +249,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                   <div className="flex flex-wrap gap-2">
                     {product.compatibility.map((model, index) => (
                       <Badge key={index} variant="secondary">
-                        {model}
+                        {model.brand} {model.model} ({model.yearStart}-{model.yearEnd})
                         <X className="ml-1 h-3 w-3 cursor-pointer" />
                       </Badge>
                     ))}
@@ -297,8 +297,8 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                 <Input type="number" defaultValue={product.price} />
               </div>
               <div className="space-y-2">
-                <Label>Eski Fiyat (TL)</Label>
-                <Input type="number" defaultValue={product.originalPrice || ""} />
+                <Label>İndirimli Fiyat (TL)</Label>
+                <Input type="number" defaultValue={product.discountPrice || ""} />
               </div>
               <div className="space-y-2">
                 <Label>Maliyet (TL)</Label>
@@ -338,11 +338,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
               </div>
               <div className="flex items-center justify-between">
                 <Label>Öne Çıkan</Label>
-                <Switch defaultChecked={product.featured} />
-              </div>
-              <div className="flex items-center justify-between">
-                <Label>Yeni Ürün</Label>
-                <Switch defaultChecked={product.isNew} />
+                <Switch defaultChecked={product.isFeatured} />
               </div>
             </CardContent>
           </Card>
