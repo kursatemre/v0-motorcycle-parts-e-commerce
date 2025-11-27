@@ -51,7 +51,7 @@ export function RegisterForm() {
         email: formData.email,
         password: formData.password,
         options: {
-          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/hesabim`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/giris`,
           data: {
             first_name: formData.firstName,
             last_name: formData.lastName,
