@@ -37,10 +37,10 @@ export function Header() {
   const [isLoading, setIsLoading] = useState(true)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const [categories, setCategories] = useState(defaultCategories)
-  const { items } = useCart()
+  const { cart } = useCart()
   const router = useRouter()
 
-  const cartItemCount = items.reduce((sum, item) => sum + item.quantity, 0)
+  const cartItemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0)
 
   useEffect(() => {
     const supabase = createClient()

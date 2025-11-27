@@ -2,22 +2,8 @@ import Link from "next/link"
 import { ChevronRight, Package } from "lucide-react"
 import { ProductCard } from "@/components/product/product-card"
 
-interface Product {
-  id: string
-  name: string
-  slug: string
-  price: number
-  compare_price: number | null
-  stock_quantity: number
-  oem_code: string | null
-  is_featured: boolean
-  is_new: boolean
-  brand: { id: string; name: string; slug: string } | null
-  images: { id: string; url: string; is_primary: boolean }[]
-}
-
 interface FeaturedProductsProps {
-  products: Product[]
+  products: any[]
 }
 
 export function FeaturedProducts({ products }: FeaturedProductsProps) {

@@ -123,7 +123,7 @@ export default function AdminProductsPage() {
 
       if (error) throw error
 
-      setProducts(data || [])
+      setProducts((data as any) || [])
       setTotalProducts(count || 0)
     } catch (err) {
       console.error("Error fetching products:", err)

@@ -31,9 +31,9 @@ export default async function HomePage() {
     supabase.from("brands").select("id, name, slug, logo_url").eq("is_active", true).order("name").limit(12),
   ])
 
-  const categories = categoriesRes.data || []
-  const featuredProducts = productsRes.data || []
-  const brands = brandsRes.data || []
+  const categories = (categoriesRes.data as any) || []
+  const featuredProducts = (productsRes.data as any) || []
+  const brands = (brandsRes.data as any) || []
 
   return (
     <div className="min-h-screen bg-background">
