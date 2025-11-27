@@ -1,13 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { Loader2, CheckCircle, XCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-export default function ConfirmPage() {
+function ConfirmContent() {
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading")
   const [message, setMessage] = useState("")
   const router = useRouter()
@@ -83,5 +83,22 @@ export default function ConfirmPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function ConfirmPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-background px-4">
+          <div className="max-w-md w-full bg-card border border-border rounded-xl p-8 text-center">
+            <Loader2 className="h-16 w-16 text-primary mx-auto mb-4 animate-spin" />
+            <h1 className="text-2xl font-bold text-foreground mb-2">Yükleniyor...</h1>
+          </div>
+        </div>
+      }
+    >
+      <ConfirmContent />
+    </Suspense>
   )
 }
